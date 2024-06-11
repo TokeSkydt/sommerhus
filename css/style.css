@@ -1,0 +1,238 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+
+:root {
+  --clr-background-color: rgb(219, 219, 219);
+  --clr-light-blue: #02ccfe;
+  --clr-black: #2b2d2f;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* utilaty classe's */
+
+.wrapper {
+  max-width: 1200px;
+  margin: auto;
+  padding-inline: 1rem;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* grid things */
+
+.grid-col-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+
+/* pageheader__nav  */
+.pageheader {
+  display: flex;
+  background-color: #f6dcbd;
+  justify-content: space-between;
+  & img {
+    width: 6rem;
+  }
+}
+
+.pageheader__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & ul {
+    display: flex;
+    gap: 4rem;
+    list-style-type: none;
+    font-size: 2rem;
+    padding: 2rem;
+    
+    padding: 1rem; 
+    & a {
+      color: var(--clr-black);
+      text-decoration: none;
+      text-transform: uppercase;
+
+      &:hover {
+        color: #3438bd;
+        font-weight: 600;
+        background-color: var(--clr-light-blue);
+        border-radius: 10px;
+        padding: 0 .5rem;
+      }
+    }
+
+  }
+  .curent-page {
+    color: yellow;
+    font-weight: 700;
+
+  }
+}/* page header nav end */
+
+/* page hero */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* calc er et regnestyk så hero'en bliver 100vh minus højden på header (navigation) */
+  /* grid-template-rows: calc(100vh - 8rem); */ /* den g're saa det ikke flytter sig ud */
+}
+
+.hero__bg {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  height: 87vh;
+  /* short hand for grid row og grid colum (grid area 1/1/2/2) grid 1 er og 2 er sammen som row */
+}
+
+.hero__heading {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  text-align: center;
+  place-self: center;
+   /* så ligger den ned i venstre hjøren brug de andere til at flytte på hero text*/
+   color: white;
+   font-size: 3.7rem;
+   font-weight: 600;
+  }
+  /* date time til sommerhus */
+  
+  #demo {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    color: white;
+    text-align: center;
+    place-self: end center; 
+    font-size: 4rem;
+    padding: 1rem 4rem;
+    margin-bottom: 15rem;
+}
+
+/* hero end */
+
+/* section alcohol */
+
+.skrift {
+  margin-top: 4rem;
+  text-align: center;
+  & h1 {
+    display: inline-block;
+    border-bottom: solid 4px var(--clr-light-blue);
+    padding: 0 1rem;
+  }
+
+}
+
+.alcohol {
+  margin-top: 5rem;
+}
+
+
+
+@media screen and (max-width: 940px) {
+  /* man ligger show menu for at se burgeren og for at style den  */
+  /* tag alt pageheader ul med */
+  .pageheader__nav ul {
+    position: fixed;
+    top: 0;
+    width: 350px;
+    height: 100%; /* så hviser den hel vejen ned */
+    right: -400;
+    background-color: #02ccfe;/* background color på burger menu */
+    flex-direction: column;
+    padding: 8rem 1rem 4rem 3rem; /* hvor store menuen skal være forhold til menuen  */
+    transition: 1s;
+    
+  }
+
+
+  .pageheader__nav ul.show-menu {
+    right: 0;
+  }
+
+  /* burger icon */
+
+  .burger {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+
+  }
+
+  .burger__line {
+    height: 4px;
+    background-color: black;
+    width: 100%;
+    border-radius: 2px;
+    transition: .3s;
+  }
+
+  .show-menu + .burger {
+    position: fixed;  
+  }
+
+
+  .show-menu + .burger #line1 {
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 12px;
+    left: 0;
+  }
+
+  .show-menu + .burger #line2 {
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 12px;
+    left: 0;
+  }
+
+  .show-menu + .burger #line3 {
+    transform: rotate(45deg);
+    position: absolute;
+    top: 12px;
+    left: 0;
+  }
+  
+}
+
+@media screen and (max-width: 655px) {
+  #demo {
+    margin-bottom: 10rem;
+}
+
+}
+
+@media screen and (max-width: 410px) {
+  #demo {
+    margin-bottom: .7rem;
+}
+
+}
